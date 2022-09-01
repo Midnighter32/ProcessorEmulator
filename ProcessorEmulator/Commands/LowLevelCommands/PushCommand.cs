@@ -4,11 +4,11 @@ using ProcessorEmulator.HardwareEmulation;
 
 namespace ProcessorEmulator.Commands.LowLevelCommands;
 
-class PushCommand : ICommand
+class push : ICommand
 {
     private readonly IValue _value;
 
-    private PushCommand(IValue left)
+    private push(IValue left)
     {
         _value = left;
     }
@@ -30,12 +30,12 @@ class PushCommand : ICommand
         return this;
     }
 
-    public static ICommand Create(params IArgument[] args)
+    public static ICommand i(params IArgument[] args)
     {
         if (args.Length != 1)
             throw new ArgumentException();
         if (args[0] is IValue val )
-            return new PushCommand(val);
+            return new push(val);
         else
             throw new NotImplementedException();
     }

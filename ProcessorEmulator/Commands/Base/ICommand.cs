@@ -8,5 +8,5 @@ interface ICommand
 
     ICommand Dump();
 
-    static abstract ICommand Create(params IArgument[] args);
+    static abstract ICommand i(params IArgument[] args);
 }

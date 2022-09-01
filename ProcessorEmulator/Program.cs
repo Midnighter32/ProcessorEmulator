@@ -4,32 +4,37 @@ using ProcessorEmulator.Commands.Base;
 using ProcessorEmulator.Commands.LowLevelCommands;
 using ProcessorEmulator.LowLevelCommands;
 using ProcessorEmulator.UtilityCommands;
+using static ProcessorEmulator.Arguments.Base.RegDef;
 
 var commands = new ICommand[]
 {
+    /**/
+        mov.i(reg.s(rax),           con.s(10)),         // mov rax, 10
+        mov.i(adr.s(con.s(0x2)),    con.s(15)),         // mov ptr [2h], 15
+        mov.i(reg.s(rcx),           con.s(0x2)),        // mov rcx, 2
+        mov.i(reg.s(rdi),           adr.s(reg.s(rcx))), // mov rdi, [rcx]
+        mov.i(adr.s(con.s(0x1)),    reg.s(rax)),        // mov ptr [1h], rax
+        add.i(reg.s(rax),           adr.s(con.s(0x1))), // add rax, ptr [1h]
+        sub.i(adr.s(con.s(0x1)),    con.s(5)),          // sub ptr [1h], 5
+        mul.i(reg.s(rax),           adr.s(con.s(0x1))), // mul rax, ptr [1h]
+        mov.i(adr.s(con.s(0x2)),    reg.s(rax)),        // mov ptr [2h], rax
+        div.i(con.s(33)),                               // div 33
+        mov.i(reg.s(rsi),           reg.s(rdx)),        // mov rsi, rdx
+    /**/
+
     /*
-        MovCommand.Create(Register.Set(REG.RAX), Constant.Set(10)),             // mov rax, 10
-        MovCommand.Create(Memory.Set(0x2),       Constant.Set(15)),             // mov ptr [2h], 15
-        MovCommand.Create(Register.Set(REG.RCX), Constant.Set(0x2)),            // mov rcx, 2
-        MovCommand.Create(Register.Set(REG.RDI), Register.Address(REG.RCX)),    // mov rdi, [rcx]
-        MovCommand.Create(Memory.Set(0x1),       Register.Set(REG.RAX)),        // mov ptr [1h], rax
-        AddCommand.Create(Register.Set(REG.RAX), Memory.Set(0x1)),              // add rax, ptr [1h]
-        SubCommand.Create(Memory.Set(0x1),       Constant.Set(5)),              // sub ptr [1h], 5
-        MulCommand.Create(Register.Set(REG.RAX), Memory.Set(0x1)),              // mul rax, ptr [1h]
-        MovCommand.Create(Memory.Set(0x2),       Register.Set(REG.RAX)),        // mov ptr [2h], rax
-        DivCommand.Create(Constant.Set(33)),                                    // div 33
-        MovCommand.Create(Register.Set(REG.RSI), Register.Set(REG.RDX)),        // mov rsi, rdx
+
+        push.i(con.s(5)),                               // push 5
+        push.i(con.s(4)),                               // push 4
+        push.i(con.s(3)),                               // push 3
+        push.i(con.s(2)),                               // push 2
+        push.i(con.s(1)),                               // push 1
+        dump.i(),                                       // dump
+        pop.i(reg.s(rdx)),                              // pop rdx
+
     */
 
-    PushCommand.Create(Constant.Set(5)),                                       // push 5
-    PushCommand.Create(Constant.Set(4)),                                       // push 4
-    PushCommand.Create(Constant.Set(3)),                                       // push 3
-    PushCommand.Create(Constant.Set(2)),                                       // push 2
-    PushCommand.Create(Constant.Set(1)),                                       // push 1
-    DumpCommand.Create(),                                                       // dump
-    PopCommand.Create(Register.Set(REG.RDX)),                                   // pop rdx
-
-    DumpCommand.Create()                                                        // dump
+    dump.i()                                            // dump
 };
 
 for (int i = 0; i < commands.Length;)

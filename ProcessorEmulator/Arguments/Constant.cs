@@ -2,9 +2,9 @@
 
 namespace ProcessorEmulator.Arguments;
 
-class Constant : IValue
+class con : IValue
 {
-    private Constant(int value)
+    private con(int value)
     {
         _val = value;
     }
@@ -21,8 +21,8 @@ class Constant : IValue
         return _val;
     }
 
-    public static Constant Set(int val)
+    public static con s(int val)
     {
-        return new Constant(val);
+        return new con(val);
     }
 }

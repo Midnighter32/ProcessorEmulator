@@ -3,12 +3,12 @@ using ProcessorEmulator.Commands.Base;
 
 namespace ProcessorEmulator.LowLevelCommands;
 
-class MovCommand : ICommand
+class mov : ICommand
 {
     private readonly IValue _value;
     private readonly IDestination _destination;
 
-    private MovCommand(IDestination left, IValue right)
+    private mov(IDestination left, IValue right)
     {
         _value = right;
         _destination = left;
@@ -31,12 +31,12 @@ class MovCommand : ICommand
         return this;
     }
 
-    public static ICommand Create(params IArgument[] args)
+    public static ICommand i(params IArgument[] args)
     {
         if (args.Length != 2)
             throw new ArgumentException();
         if (args[0] is IDestination dest && args[1] is IValue val)
-            return new MovCommand(dest, val);
+            return new mov(dest, val);
         else
             throw new NotImplementedException();
     }

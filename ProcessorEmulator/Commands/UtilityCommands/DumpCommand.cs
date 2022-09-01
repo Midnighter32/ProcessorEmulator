@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace ProcessorEmulator.UtilityCommands
 {
-    class DumpCommand : ICommand
+    class dump : ICommand
     {
-        private DumpCommand()
+        private dump()
         {
         }
 
@@ -39,12 +39,12 @@ namespace ProcessorEmulator.UtilityCommands
             return this;
         }
 
-        public static ICommand Create(params IArgument[] args)
+        public static ICommand i(params IArgument[] args)
         {
             if (args.Length != 0)
                 throw new NotImplementedException();
 
-            return new DumpCommand();
+            return new dump();
         }
     }
 }

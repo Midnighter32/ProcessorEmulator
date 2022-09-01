@@ -1,13 +1,13 @@
 ﻿namespace ProcessorEmulator.Arguments.Base;
 
-enum REG
+enum RegDef
 {
-    RAX,
-    RCX,
-    RDX,
-    RBX,
-    RSP,
-    RBP,
-    RSI,
-    RDI
+    rax,
+    rcx,
+    rdx,
+    rbx,
+    rsp,
+    rbp,
+    rsi,
+    rdi
 }

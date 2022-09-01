@@ -4,11 +4,11 @@ using ProcessorEmulator.Commands.Base;
 
 namespace ProcessorEmulator.Commands.LowLevelCommands
 {
-    class DivCommand : ICommand
+    class div : ICommand
     {
         private readonly IValue _source;
 
-        private DivCommand(IValue src)
+        private div(IValue src)
         {
             _source = src;
         }
@@ -22,8 +22,8 @@ namespace ProcessorEmulator.Commands.LowLevelCommands
 
         public ICommand Execute(ref int i)
         {
-            Register rax = Register.Set(REG.RAX);
-            Register rdx = Register.Set(REG.RDX);
+            reg rax = reg.s(RegDef.rax);
+            reg rdx = reg.s(RegDef.rdx);
 
             var value = Math.DivRem(rax.GetValue(), _source.GetValue(), out var reminder);
 
@@ -35,12 +35,12 @@ namespace ProcessorEmulator.Commands.LowLevelCommands
             return this;
         }
 
-        public static ICommand Create(params IArgument[] args)
+        public static ICommand i(params IArgument[] args)
         {
             if (args.Length != 1)
                 throw new ArgumentException();
             if (args[0] is IValue src)
-                return new DivCommand(src);
+                return new div(src);
             else
                 throw new NotImplementedException();
         }

@@ -4,11 +4,11 @@ using ProcessorEmulator.HardwareEmulation;
 
 namespace ProcessorEmulator.Commands.LowLevelCommands;
 
-class PopCommand : ICommand
+class pop : ICommand
 {
     private readonly IDestination _dest;
 
-    private PopCommand(IDestination dest)
+    private pop(IDestination dest)
     {
         _dest = dest;
     }
@@ -30,12 +30,12 @@ class PopCommand : ICommand
         return this;
     }
 
-    public static ICommand Create(params IArgument[] args)
+    public static ICommand i(params IArgument[] args)
     {
         if (args.Length != 1)
             throw new ArgumentException();
         if (args[0] is IDestination dest )
-            return new PopCommand(dest);
+            return new pop(dest);
         else
             throw new NotImplementedException();
     }

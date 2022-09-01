@@ -3,12 +3,12 @@ using ProcessorEmulator.Commands.Base;
 
 namespace ProcessorEmulator.Commands.LowLevelCommands
 {
-    class MulCommand : ICommand
+    class mul : ICommand
     {
         private readonly IObject _reciever;
         private readonly IValue _source;
 
-        private MulCommand(IObject rec, IValue src)
+        private mul(IObject rec, IValue src)
         {
             _reciever = rec;
             _source = src;
@@ -31,12 +31,12 @@ namespace ProcessorEmulator.Commands.LowLevelCommands
             return this;
         }
 
-        public static ICommand Create(params IArgument[] args)
+        public static ICommand i(params IArgument[] args)
         {
             if (args.Length != 2)
                 throw new ArgumentException();
             if (args[0] is IObject rec && args[1] is IValue src)
-                return new MulCommand(rec, src);
+                return new mul(rec, src);
             else
                 throw new NotImplementedException();
         }
