@@ -15,14 +15,14 @@ namespace ProcessorEmulator.UtilityCommands
         {
         }
 
-        public ICommand Dump()
+        public ICommand d()
         {
             Console.Write("dump");
 
             return this;
         }
 
-        public ICommand Execute(ref int i)
+        public ICommand e(ref int i)
         {
             Console.WriteLine();
 

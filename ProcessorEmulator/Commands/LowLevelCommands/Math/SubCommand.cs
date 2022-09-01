@@ -14,14 +14,14 @@ namespace ProcessorEmulator.Commands.LowLevelCommands
             _source = src;
         }
 
-        public ICommand Dump()
+        public ICommand d()
         {
             Console.Write($"sub {_reciever.GetName()}, {_source.GetName()}");
 
             return this;
         }
 
-        public ICommand Execute(ref int i)
+        public ICommand e(ref int i)
         {
             var value = _reciever.GetValue() - _source.GetValue();
             _reciever.SetValue(value);

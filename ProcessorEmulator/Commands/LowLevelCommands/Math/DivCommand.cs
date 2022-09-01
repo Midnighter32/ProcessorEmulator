@@ -13,14 +13,14 @@ namespace ProcessorEmulator.Commands.LowLevelCommands
             _source = src;
         }
 
-        public ICommand Dump()
+        public ICommand d()
         {
             Console.Write($"div {_source.GetName()}");
 
             return this;
         }
 
-        public ICommand Execute(ref int i)
+        public ICommand e(ref int i)
         {
             reg rax = reg.s(RegDef.rax);
             reg rdx = reg.s(RegDef.rdx);

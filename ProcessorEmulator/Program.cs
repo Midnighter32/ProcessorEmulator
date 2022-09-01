@@ -22,7 +22,7 @@ var commands = new ICommand[]
         mov.i(reg.s(rsi),           reg.s(rdx)),        // mov rsi, rdx
     /**/
 
-    /*
+    /**/
 
         push.i(con.s(5)),                               // push 5
         push.i(con.s(4)),                               // push 4
@@ -32,14 +32,14 @@ var commands = new ICommand[]
         dump.i(),                                       // dump
         pop.i(reg.s(rdx)),                              // pop rdx
 
-    */
+    /**/
 
     dump.i()                                            // dump
 };
 
 for (int i = 0; i < commands.Length;)
 {
-    commands[i].Dump().Execute(ref i);
+    commands[i].d().e(ref i);
 
     Console.WriteLine();
 }

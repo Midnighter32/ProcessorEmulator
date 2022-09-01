@@ -14,14 +14,14 @@ class mov : ICommand
         _destination = left;
     }
 
-    public ICommand Dump()
+    public ICommand d()
     {
         Console.Write($"mov {_destination.GetName()}, {_value.GetName()}");
 
         return this;
     }
 
-    public ICommand Execute(ref int i)
+    public ICommand e(ref int i)
     {
         var value = _value.GetValue();
         _destination.SetValue(value);

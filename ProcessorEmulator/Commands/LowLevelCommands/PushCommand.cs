@@ -13,14 +13,14 @@ class push : ICommand
         _value = left;
     }
 
-    public ICommand Dump()
+    public ICommand d()
     {
         Console.Write($"push {_value.GetName()}");
 
         return this;
     }
 
-    public ICommand Execute(ref int i)
+    public ICommand e(ref int i)
     {
         var value = _value.GetValue();
         Stack.Instance.Push(value);

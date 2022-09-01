@@ -13,14 +13,14 @@ class pop : ICommand
         _dest = dest;
     }
 
-    public ICommand Dump()
+    public ICommand d()
     {
         Console.Write($"pop {_dest.GetName()}");
 
         return this;
     }
 
-    public ICommand Execute(ref int i)
+    public ICommand e(ref int i)
     {
         Stack.Instance.Pop(out int value);
         _dest.SetValue(value);
