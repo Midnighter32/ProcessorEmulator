@@ -1,4 +1,4 @@
-using ProcessorEmulator.Arguments.Base;
+﻿using ProcessorEmulator.Arguments.Base;
 using ProcessorEmulator.Commands.Base;
 using ProcessorEmulator.HardwareEmulation;
 using System;
@@ -30,6 +30,8 @@ namespace ProcessorEmulator.UtilityCommands
             Registers.Instance.Dump();
             Console.WriteLine("\nmem:");
             MemoryHeap.Instance.Dump();
+            Console.WriteLine("\nstack:");
+            Stack.Instance.Dump();
             Console.WriteLine("=========");
 
             i++;
