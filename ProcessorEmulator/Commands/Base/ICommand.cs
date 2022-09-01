@@ -4,7 +4,7 @@ namespace ProcessorEmulator.Commands.Base;
 
 interface ICommand
 {
-    ICommand Execute();
+    ICommand Execute(ref int i);
 
     ICommand Dump();
 

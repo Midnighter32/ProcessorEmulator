@@ -1,4 +1,4 @@
-﻿using ProcessorEmulator.Arguments.Base;
+using ProcessorEmulator.Arguments.Base;
 using ProcessorEmulator.Commands.Base;
 using ProcessorEmulator.HardwareEmulation;
 using System;
@@ -22,7 +22,7 @@ namespace ProcessorEmulator.UtilityCommands
             return this;
         }
 
-        public ICommand Execute()
+        public ICommand Execute(ref int i)
         {
             Console.WriteLine();
 
@@ -31,6 +31,8 @@ namespace ProcessorEmulator.UtilityCommands
             Console.WriteLine("\nmem:");
             MemoryHeap.Instance.Dump();
             Console.WriteLine("=========");
+
+            i++;
 
             return this;
         }

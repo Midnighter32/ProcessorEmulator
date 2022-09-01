@@ -20,7 +20,7 @@ namespace ProcessorEmulator.Commands.LowLevelCommands
             return this;
         }
 
-        public ICommand Execute()
+        public ICommand Execute(ref int i)
         {
             Register rax = Register.Set(REG.RAX);
             Register rdx = Register.Set(REG.RDX);
@@ -29,6 +29,8 @@ namespace ProcessorEmulator.Commands.LowLevelCommands
 
             rax.SetValue(value);
             rdx.SetValue(reminder);
+
+            i++;
 
             return this;
         }

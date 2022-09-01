@@ -3,12 +3,12 @@ using ProcessorEmulator.Commands.Base;
 
 namespace ProcessorEmulator.Commands.LowLevelCommands
 {
-    class AddCommand : ICommand
+    class MulCommand : ICommand
     {
         private readonly IObject _reciever;
         private readonly IValue _source;
 
-        private AddCommand(IObject rec, IValue src)
+        private MulCommand(IObject rec, IValue src)
         {
             _reciever = rec;
             _source = src;
@@ -16,15 +16,17 @@ namespace ProcessorEmulator.Commands.LowLevelCommands
 
         public ICommand Dump()
         {
-            Console.Write($"add {_reciever.GetName()}, {_source.GetName()}");
+            Console.Write($"mul {_reciever.GetName()}, {_source.GetName()}");
 
             return this;
         }
 
-        public ICommand Execute()
+        public ICommand Execute(ref int i)
         {
-            var value = _reciever.GetValue() + _source.GetValue();
+            var value = _reciever.GetValue() * _source.GetValue();
             _reciever.SetValue(value);
+
+            i++;
 
             return this;
         }
@@ -34,7 +36,7 @@ namespace ProcessorEmulator.Commands.LowLevelCommands
             if (args.Length != 2)
                 throw new ArgumentException();
             if (args[0] is IObject rec && args[1] is IValue src)
-                return new AddCommand(rec, src);
+                return new MulCommand(rec, src);
             else
                 throw new NotImplementedException();
         }

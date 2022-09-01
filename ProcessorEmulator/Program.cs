@@ -1,4 +1,4 @@
-﻿using ProcessorEmulator.Arguments;
+using ProcessorEmulator.Arguments;
 using ProcessorEmulator.Arguments.Base;
 using ProcessorEmulator.Commands.Base;
 using ProcessorEmulator.Commands.LowLevelCommands;
@@ -21,9 +21,9 @@ var commands = new ICommand[]
     DumpCommand.Create()                                                    // dump
 };
 
-for (int i = 0; i < commands.Length; i++)
+for (int i = 0; i < commands.Length;)
 {
-    commands[i].Dump().Execute();
+    commands[i].Dump().Execute(ref i);
 
     Console.WriteLine();
 }

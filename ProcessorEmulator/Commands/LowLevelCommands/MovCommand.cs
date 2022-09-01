@@ -21,10 +21,12 @@ class MovCommand : ICommand
         return this;
     }
 
-    public ICommand Execute()
+    public ICommand Execute(ref int i)
     {
         var value = _value.GetValue();
         _destination.SetValue(value);
+
+        i++;
 
         return this;
     }
