@@ -1,6 +1,4 @@
-﻿using ProcessorEmulator.Arguments.Base;
-
-namespace ProcessorEmulator.Commands.Base;
+﻿namespace ProcessorEmulator.Commands.Base;
 
 interface ICommand
 {
@@ -15,12 +13,5 @@ interface ICommand
     /// Dump Command info in Console
     /// </summary>
     /// <returns>Return ICommand for method chaining</returns>
-    ICommand d();
-
-    /// <summary>
-    /// Create ICommand instance
-    /// </summary>
-    /// <param name="args">Command arguments</param>
-    /// <returns>ICommand instance</returns>
-    static abstract ICommand i(params IArgument[] args);
+    abstract ICommand d();
 }
