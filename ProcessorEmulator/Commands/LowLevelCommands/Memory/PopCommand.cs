@@ -4,26 +4,26 @@ using ProcessorEmulator.HardwareEmulation;
 
 namespace ProcessorEmulator.Commands.LowLevelCommands;
 
-class push : ICommand
+class pop : ICommand
 {
-    private readonly IValue _value;
+    private readonly IDestination _dest;
 
-    private push(IValue left)
+    private pop(IDestination dest)
     {
-        _value = left;
+        _dest = dest;
     }
 
     public ICommand d()
     {
-        Console.Write($"push {_value.GetName()}");
+        Console.Write($"pop {_dest.GetName()}");
 
         return this;
     }
 
     public ICommand e(ref int i)
     {
-        var value = _value.GetValue();
-        Stack.Instance.Push(value);
+        Stack.Instance.Pop(out int value);
+        _dest.SetValue(value);
 
         i++;
 
@@ -34,8 +34,8 @@ class push : ICommand
     {
         if (args.Length != 1)
             throw new ArgumentException();
-        if (args[0] is IValue val )
-            return new push(val);
+        if (args[0] is IDestination dest)
+            return new pop(dest);
         else
             throw new NotImplementedException();
     }

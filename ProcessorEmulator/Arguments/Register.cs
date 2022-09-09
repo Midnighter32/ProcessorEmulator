@@ -14,7 +14,7 @@ class reg : IObject
 
     public string GetName()
     {
-        return _id.ToString().ToLower();
+        return _id.ToString();
     }
 
     public void SetValue(int val)

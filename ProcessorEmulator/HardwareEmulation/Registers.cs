@@ -19,7 +19,7 @@ namespace ProcessorEmulator.HardwareEmulation
         {
             for (int i = 0; i < reg.Length; i++)
             {
-                Console.WriteLine($"{((RegDef)i).ToString().ToLower()}={reg[i]} ");
+                Console.WriteLine($"{((RegDef)i)}={reg[i]} ");
             }
         }
 

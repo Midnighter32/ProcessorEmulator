@@ -1,7 +1,7 @@
 ﻿using ProcessorEmulator.Arguments.Base;
 using ProcessorEmulator.Commands.Base;
 
-namespace ProcessorEmulator.LowLevelCommands;
+namespace ProcessorEmulator.Commands.LowLevelCommands;
 
 class mov : ICommand
 {
